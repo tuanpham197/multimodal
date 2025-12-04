@@ -1,2 +1,7 @@
 .env
 .venv
+/db
+/temp_images
+/__pycache__
+/fe/node_modules
+/fe/.vite
