@@ -10,11 +10,13 @@ class IndexUseCase:
         self,
         multi_vector_repo: MultiVectorRepository,
         llm_provider: LLMProvider,
+        skip_text_summarization: bool = True,
     ):
         self._repo = multi_vector_repo
         self._summarization_service = SummarizationService(llm_provider)
         self._document_parser = UnifiedDocumentParser()
         self._image_parser = ImageParser()
+        self._skip_text_summarization = skip_text_summarization
 
     def index_document(self, file_path: str) -> dict:
         ext = Path(file_path).suffix.lower()
@@ -28,20 +30,44 @@ class IndexUseCase:
             image_summaries = self._summarization_service.summarize_images(elements["images"])
             result = self._image_parser.chunk_summaries(elements["images"], image_summaries)
             total += self._repo.add_documents(result["images"], result["summaries"])
+            print(f"[DEBUG IndexUseCase] Indexed {len(result['images'])} image chunks")
 
         if elements["texts"]:
             print(f"[DEBUG IndexUseCase] Found {len(elements['texts'])} text chunks")
             text_contents = [str(t) for t in elements["texts"]]
-            text_summaries = self._summarization_service.summarize_texts(text_contents)
-            total += self._repo.add_documents(text_contents, text_summaries)
+            
+            if self._skip_text_summarization:
+                print(f"[DEBUG IndexUseCase] Using raw text as summary (skip LLM)")
+                text_summaries = text_contents
+            else:
+                print(f"[DEBUG IndexUseCase] Generating text summaries with LLM...")
+                text_summaries = self._summarization_service.summarize_texts(text_contents)
+            
+            print(f"[DEBUG IndexUseCase] Adding {len(text_contents)} text chunks to vector store")
+            added = self._repo.add_documents(text_contents, text_summaries)
+            total += added
+            print(f"[DEBUG IndexUseCase] Indexed {added} text chunks")
 
         if elements["tables"]:
             print(f"[DEBUG IndexUseCase] Found {len(elements['tables'])} tables")
             table_contents = [t.metadata.text_as_html if hasattr(t.metadata, "text_as_html") else str(t) for t in elements["tables"]]
-            table_summaries = self._summarization_service.summarize_texts(table_contents)
-            total += self._repo.add_documents(table_contents, table_summaries)
+            
+            if self._skip_text_summarization:
+                table_summaries = table_contents
+            else:
+                table_summaries = self._summarization_service.summarize_texts(table_contents)
+            
+            added = self._repo.add_documents(table_contents, table_summaries)
+            total += added
+            print(f"[DEBUG IndexUseCase] Indexed {added} tables")
 
-        return self._build_result(total)
+        result = self._build_result(total)
+        print(f"[DEBUG IndexUseCase] === INDEX COMPLETE ===")
+        print(f"[DEBUG IndexUseCase] Total indexed: {result['total_indexed']}")
+        print(f"[DEBUG IndexUseCase] VectorStore count: {result['vectorstore_count']}")
+        print(f"[DEBUG IndexUseCase] DocStore keys: {result['docstore_keys']}")
+        
+        return result
 
     def index_pdf(self, file_path: str) -> dict:
         return self.index_document(file_path)

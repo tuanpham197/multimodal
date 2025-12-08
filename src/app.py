@@ -5,6 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.config import Container
 from src.interfaces.api import router
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -13,9 +17,17 @@ async def lifespan(app: FastAPI):
     print("\n[STARTUP] Initializing vector store...")
     index_use_case = container.get_index_use_case()
 
-    print(f"[STARTUP] Parsing PDF: {container.settings.pdf_path}")
-    result = index_use_case.index_pdf(container.settings.pdf_path)
-    print(f"[STARTUP] PDF indexing result: {result}")
+    # print(f"[STARTUP] Parsing PDF: {container.settings.pdf_path}")
+    # result = index_use_case.index_pdf(container.settings.pdf_path)
+    # print(f"[STARTUP] PDF indexing result: {result}")
+
+    # print(f"[STARTUP] Parsing PPTX: {container.settings.pptx_path}")
+    # result = index_use_case.index_pptx(container.settings.pptx_path)
+    # print(f"[STARTUP] PPTX indexing result: {result}")
+
+    print(f"[STARTUP] Parsing DOCX: {container.settings.docx_path}")
+    result = index_use_case.index_docx(container.settings.docx_path)
+    print(f"[STARTUP] DOCX indexing result: {result}")
 
     if container.settings.image_paths:
         print(f"[STARTUP] Processing {len(container.settings.image_paths)} image paths...")

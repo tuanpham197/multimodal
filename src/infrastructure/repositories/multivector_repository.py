@@ -53,10 +53,41 @@ class MultiVectorRepository:
         
         return len(doc_ids)
 
-    def search(self, query: str, k: int = 3) -> list:
+    def search(self, query: str, k: int = 3, min_score: float = 0.3) -> list:
         print(f"[DEBUG MultiVectorRepo] Searching: {query}")
-        docs = self._retriever.invoke(query, k=k)
-        print(f"[DEBUG MultiVectorRepo] Found {len(docs)} documents")
+        
+        vector_results = self._vectorstore.similarity_search_with_relevance_scores(query, k=k)
+        print(f"[DEBUG MultiVectorRepo] Vector search found {len(vector_results)} matches")
+        
+        docs = []
+        seen_images = set()
+        
+        for doc, score in vector_results:
+            if score < min_score:
+                print(f"[DEBUG MultiVectorRepo] Skip: score={score:.4f} < {min_score}")
+                continue
+                
+            doc_id = doc.metadata.get(self.ID_KEY)
+            print(f"[DEBUG MultiVectorRepo] Match: score={score:.4f}, doc_id={doc_id}")
+            print(f"[DEBUG MultiVectorRepo] Summary: {doc.page_content[:100]}...")
+            
+            if doc_id:
+                raw_data = self._store.mget([doc_id])
+                if raw_data[0]:
+                    item = raw_data[0]
+                    if isinstance(item, dict) and item.get("type") == "image":
+                        image_path = item.get("path") or item.get("base64", "")[:50]
+                        if image_path in seen_images:
+                            print(f"[DEBUG MultiVectorRepo] Skip duplicate image: {image_path}")
+                            continue
+                        seen_images.add(image_path)
+                    
+                    docs.append(item)
+                    print(f"[DEBUG MultiVectorRepo] ✓ Found raw data in docstore")
+                else:
+                    print(f"[DEBUG MultiVectorRepo] ✗ doc_id NOT FOUND in docstore!")
+        
+        print(f"[DEBUG MultiVectorRepo] Final result: {len(docs)} documents")
         return docs
 
     def search_with_scores(self, query: str, k: int = 3) -> list[tuple[Document, float]]:

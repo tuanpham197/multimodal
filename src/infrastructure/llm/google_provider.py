@@ -4,7 +4,7 @@ from src.domain.interfaces import LLMProvider
 
 
 class GoogleLLMProvider(LLMProvider):
-    def __init__(self, api_key: str, model: str = "gemini-2.0-flash-lite", temperature: float = 0):
+    def __init__(self, api_key: str, model: str = "gemini-2.5-flash-lite", temperature: float = 0):
         self._api_key = api_key
         self._model = model
         self._temperature = temperature
@@ -18,7 +18,7 @@ class GoogleLLMProvider(LLMProvider):
 
     def get_vision_model(self) -> BaseChatModel:
         return ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             temperature=self._temperature,
             max_tokens=65536,
             timeout=60,

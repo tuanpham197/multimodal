@@ -15,14 +15,13 @@ class SummarizationService:
             return []
 
         prompt = self._prompt_builder.build()
-        # model = self._llm_provider.get_vision_model()
         model = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             temperature=0,
             max_tokens=65536,
             timeout=60,
             max_retries=1,
-            api_key=os.getenv("GOOGLE_API_KEY", ""),
+            google_api_key=os.getenv("GOOGLE_API_KEY", ""),
         )
         chain = prompt | model | StrOutputParser()
 
@@ -46,4 +45,3 @@ Text chunk: {element}"""
         chain = {"element": lambda x: x} | prompt | model | StrOutputParser()
 
         return chain.batch(texts, {"max_concurrency": 3})
-

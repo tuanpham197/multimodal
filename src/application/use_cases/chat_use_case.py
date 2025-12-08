@@ -24,7 +24,7 @@ class ChatUseCase:
         print(f"[DEBUG ChatUseCase] Message: {message}")
         print(f"[DEBUG ChatUseCase] Retrieved {len(relevant_docs)} documents")
         for i, doc in enumerate(relevant_docs):
-            preview = doc[:100] if isinstance(doc, str) else str(doc)[:100]
+            preview = doc if isinstance(doc, str) else str(doc)
             print(f"[DEBUG ChatUseCase] Doc {i}: len={len(doc) if hasattr(doc, '__len__') else 'N/A'}, preview={preview}...")
 
         parsed = self._document_parser.parse_documents(relevant_docs)

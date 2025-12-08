@@ -122,3 +122,4 @@ Text chunk: {element}
 | `src/application/services/prompt_builder.py` | Chat prompts |
 | `src/application/services/summarization_service.py` | Summary prompts |
 
+

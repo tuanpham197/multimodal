@@ -1,0 +1,64 @@
+=== CHUNK 1 (919 chars) ===
+Quy định chung về nghỉ phép.
+Đơn vị tính phép tối thiểu: 2 tiếng
+(Nghỉ phép trên 30 phút trở lên mới làm đơn xin nghỉ)
+Đăng ký nghỉ phép trước ngày nghỉ thực tế, thời gian báo trước bằng với số ngày nghỉ.
+Ví dụ:
+Nghỉ phép 2 ngày, vào ngày 19/10/2022 và 20/10/2022 thì đăng ký nghỉ phép vào trước ngày 17/10/2022.
+Nghỉ phép 1 ngày, vào ngày 19/10/2022 thì đăng ký nghỉ phép vào trước ngày 18/10/2022.
+Xin phép không đúng thủ tục và thời gian quy định sẽ bị tính là “vắng không phép”. Xin đi muộn phải báo trước 7:30. (trừ trường hợp bất khả kháng như thiên tai, hỏa hoạn, nhà có tang, người thân/bản thân đau ốm đột ngột có giấy xác nhận từ bệnh viện/ cơ sở y tế/ bác sĩ)
+Trường hợp nghỉ phép đột xuất - chưa kịp làm đơn nghỉ phép trên portal:
+Cần phải có sự chấp thuận của PL và đơn nghỉ phép phải được gửi bù trong thời hạn 5 ngày kể từ ngày nghỉ. Nếu không gửi đúng thời gian quy định sẽ được tính là nghỉ không phép.
+
+==================================================
+
+=== CHUNK 2 (381 chars) ===
+Cần phải có sự chấp thuận của PL và đơn nghỉ phép phải được gửi bù trong thời hạn 5 ngày kể từ ngày nghỉ. Nếu không gửi đúng thời gian quy định sẽ được tính là nghỉ không phép.
+Sau khi đã cập nhật đơn nghỉ phép trên Portal, nhân viên thông báo trong thread Slack của Đơn xin nghỉ phép với nội dung “Đã request Portal” hoặc nội dung tương tự để các bên liên quan cùng nắm thông tin.
+
+==================================================
+
+=== CHUNK 3 (985 chars) ===
+V.  LÀM VIỆC LINH HOẠT (FLEXIBLE WORK)
+Work from home (WFH)
+Gồm có các loại Work from home (WFH) như sau
+WFH theo chế độ công ty
+WFH theo chính sách “Hỗ trợ chăm sóc con nhỏ < 3 tuổi”
+WFH theo các trường hợp đặc biệt
+WFH theo chế độ công ty
+Đối tượng áp dụng: Nhân viên ký hợp đồng chính thức
+Quy định:
+Nhân viên: 2 ngày/tháng
+Manager, Leader, Sub leader, Project Leader: 4 ngày/tháng
+Quy trình:
+Bước 1: Nhân viên liên hệ với Project Leader để được hướng dẫn.
+(Project Lead là người duyệt và chịu trách nhiệm về việc WFH của nhân viên do mình quản lý).
+Lưu ý:
+Không cộng dồn số ngày WFH;
+Phải chuẩn bị môi trường làm việc đảm bảo cho công việc: wifi mạnh và ổn định, thiết bị đầy đủ. Hạn chế sử dụng các môi trường thiếu sự ổn định và ồn ào như quán cà phê, nhà hàng,...;
+Trong quá trình WFH, nhân viên cần đảm bảo luôn luôn online và phản hồi các yêu cầu 1 cách kịp thời;
+Phải đảm bảo hoàn thành task theo đúng thời gian yêu cầu, tuyệt đối không được làm ảnh hưởng đến dự án, công ty.
+
+==================================================
+
+=== CHUNK 4 (943 chars) ===
+Phải đảm bảo hoàn thành task theo đúng thời gian yêu cầu, tuyệt đối không được làm ảnh hưởng đến dự án, công ty.
+KHÔNG áp dụng WFH đối với:
+Nhân viên thực tập;
+Thời điểm quan trọng của công ty: Tổ chức sự kiện , Khách hàng ghé thăm;
+Dự án: Giờ meeting, giờ deploy.
+Hình thức kỷ luật: Nếu vi phạm về việc không đảm bảo chất lượng khi WFH: Nhân viên vi phạm lần đầu sẽ bị nhắc nhở cảnh báo, từ lần 2 trở lên sẽ mất quyền lợi WFH.
+WFH theo chính sách “Hỗ trợ chăm sóc con nhỏ < 3 tuổi”
+Đối tượng áp dụng: Nhân viên có con nhỏ dưới 3 tuổi
+Số lượng: 2 ngày/tháng
+Quy trình: Thông báo cho Project Leader và General Manager (Lê Quốc Huy)
+Những trường hợp khác
+Trong những trường hợp bất khả kháng: dịch bệnh, thiên tai,...quy định làm việc tại nhà sẽ tuân thủ theo quy định của UBND Thành Phố nơi nhân viên làm việc và được duyệt bởi cấp Quản lý hoặc Giám đốc.
+Trong trường hợp khác, nhân viên liên hệ với Project Leader và Quản lý để được xét duyệt.
+
+==================================================
+
+
+
+=== TABLES (0) ===
+

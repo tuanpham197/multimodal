@@ -15,11 +15,13 @@ class Settings:
     ollama_chat_model: str = "llama3"
     ollama_vision_model: str = "llava"
 
-    google_chat_model: str = "gemini-2.0-flash-lite"
-    google_vision_model: str = "gemini-2.0-flash"
+    google_chat_model: str = "gemini-2.5-flash-lite"
+    google_vision_model: str = "gemini-2.5-flash"
 
     collection_name: str = "multi_modal_rag"
     pdf_path: str = "./content/attention.pdf"
+    pptx_path: str = "./content/attention.pptx"
+    docx_path: str = "./content/docs/test.docx"
     image_paths: list[str] = field(default_factory=lambda: ["./content/images/image.png"])
 
     llm_provider_type: str = field(default_factory=lambda: os.getenv("LLM_PROVIDER", "google"))
